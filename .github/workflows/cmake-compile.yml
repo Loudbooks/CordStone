@@ -34,7 +34,7 @@ jobs:
           cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="/Z7" -DCMAKE_C_FLAGS_RELWITHDEBINFO="/Z7"
 
       - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}}
+        run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} -j8
 
       - name: Upload Artifact (Windows - Release)
         if: matrix.os == 'windows-latest' && matrix.build_type == 'Release'
