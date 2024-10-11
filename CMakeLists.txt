@@ -39,7 +39,7 @@ FetchContent_MakeAvailable(endstone)
 FetchContent_Declare(
         dpp
         GIT_REPOSITORY https://github.com/brainboxdotcc/DPP.git
-        GIT_TAG master
+        GIT_TAG v10.0.31
 )
 FetchContent_MakeAvailable(dpp)
 
