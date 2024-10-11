@@ -6,6 +6,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCES
         src/cordstone.cpp
         src/cordstone.h
+        src/discord/discord.cpp
+        src/discord/discord.h
+        src/discord/message_type.hpp
+        src/json/json_loader.cpp
+        src/json/json_loader.h
 )
 
 set(OUTPUT_NAME ${PROJECT_NAME})
