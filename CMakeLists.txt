@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.30)
-project(example_plugin)
+project(cordstone)
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCES
-        src/example_plugin.cpp
-        src/example_plugin.h
+        src/cordstone.cpp
+        src/cordstone.h
 )
 
 set(OUTPUT_NAME ${PROJECT_NAME})
@@ -31,6 +31,18 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(endstone)
 
+FetchContent_Declare(
+        dpp
+        GIT_REPOSITORY https://github.com/brainboxdotcc/DPP.git
+        GIT_TAG master
+)
+FetchContent_MakeAvailable(dpp)
+
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 endstone_add_plugin(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(${PROJECT_NAME} PRIVATE dpp)
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${OUTPUT_NAME})

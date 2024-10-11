@@ -1,11 +1,11 @@
 //
-// Created by Loudbook on 10/2/24.
+// Created by Loudbook on 10/11/24.
 //
 
 #pragma once
 #include <endstone/plugin/plugin.h>
 
-class ExamplePlugin : public endstone::Plugin {
+class CordStone : public endstone::Plugin {
     void onEnable() override {
 
     }
