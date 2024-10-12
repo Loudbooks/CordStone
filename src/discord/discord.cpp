@@ -14,9 +14,14 @@ void Discord::connect(const std::string& token) {
 
 void Discord::sendFormattedEmbed(const std::string &content, const MessageType type, const std::string& skin, const std::string &username) const {
     dpp::embed embed;
-    this->imageUploader.upload(skin, username + ".png");
+    if (!skin.empty()) {
+        this->imageUploader.upload(skin, username + ".png");
 
-    std::string imageUrl = "https://bedrock.loudbook.dev/image/" + username + ".png";
+        std::string imageUrl = "https://bedrock.loudbook.dev/image/" + username + ".png";
+        embed.set_thumbnail(imageUrl);
+    } else {
+        embed.set_thumbnail("https://bedrock.loudbook.dev/image/default.png");
+    }
 
     switch (type) {
         case MessageType::JOIN:
