@@ -17,7 +17,7 @@ void ImageUploader::upload(const std::string& imageData, const std::string& imag
 
         curl_mimepart *part = curl_mime_addpart(mime);
         curl_mime_data(part, imageData.c_str(), imageData.size());
-        curl_mime_type(part, "image/jpeg");
+        curl_mime_type(part, "image/png");
         curl_mime_filename(part, imageName.c_str());
 
         curl_easy_setopt(curl, CURLOPT_URL, serverUrl.c_str());
