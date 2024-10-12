@@ -32,7 +32,7 @@ private:
     }
 
     void onPlayerJoin(const endstone::PlayerJoinEvent& event) {
-        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getSkin(), event.getPlayer().getUniqueId().str());
+        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
     }
 
     void onPlayerQuit(const endstone::PlayerQuitEvent& event) {
