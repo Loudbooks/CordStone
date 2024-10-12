@@ -32,15 +32,15 @@ private:
     }
 
     void onPlayerJoin(const endstone::PlayerJoinEvent& event) {
-        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getName(), event.getPlayer().getXuid());
+        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
     }
 
     void onPlayerQuit(const endstone::PlayerQuitEvent& event) {
-        discord.sendFormattedEmbed(event.getPlayer().getName() + " left the server.", MessageType::LEAVE, event.getPlayer().getName(), event.getPlayer().getXuid());
+        discord.sendFormattedEmbed(event.getPlayer().getName() + " left the server.", MessageType::LEAVE, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
     }
 
     void onPlayerChat(const endstone::PlayerChatEvent& event) {
-        discord.sendFormattedEmbed(event.getMessage(), MessageType::MESSAGE, event.getPlayer().getName(), event.getPlayer().getXuid());
+        discord.sendFormattedEmbed(event.getMessage(), MessageType::MESSAGE, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
     }
 
 private:
