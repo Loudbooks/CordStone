@@ -7,8 +7,8 @@
 
 class ImageUploader {
 public:
-    explicit ImageUploader(std::string  serverUrl);
-    [[nodiscard]] std::string upload(const std::string& imageData, const std::string& imageName) const;
+    explicit ImageUploader(std::string serverUrl);
+    void upload(const std::string& imageData, const std::string& imageName) const;
 
 private:
     std::string serverUrl;

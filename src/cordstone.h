@@ -11,10 +11,11 @@
 
 #include "discord/discord.h"
 #include "json/json_loader.h"
+#include "minecraft/image_uploader.h"
 
 class CordStone : public endstone::Plugin {
 public:
-    CordStone() : loader(JsonLoader(std::filesystem::current_path().string() + "/CordStone/config.json")), discord(loader.getChannelId()) {}
+    CordStone() : loader(JsonLoader(std::filesystem::current_path().string() + "/CordStone/config.json")), discord(loader.getChannelId(), ImageUploader("https://bedrock.loudbook.dev/upload")) {}
 
 private:
     void onEnable() override {
@@ -32,15 +33,15 @@ private:
     }
 
     void onPlayerJoin(const endstone::PlayerJoinEvent& event) {
-        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
+        discord.sendFormattedEmbed(event.getPlayer().getName() + " joined the server.", MessageType::JOIN, event.getPlayer().getSkin().getSkinData().data, event.getPlayer().getName());
     }
 
     void onPlayerQuit(const endstone::PlayerQuitEvent& event) {
-        discord.sendFormattedEmbed(event.getPlayer().getName() + " left the server.", MessageType::LEAVE, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
+        discord.sendFormattedEmbed(event.getPlayer().getName() + " left the server.", MessageType::LEAVE, event.getPlayer().getSkin().getSkinData().data, event.getPlayer().getName());
     }
 
     void onPlayerChat(const endstone::PlayerChatEvent& event) {
-        discord.sendFormattedEmbed(event.getMessage(), MessageType::MESSAGE, event.getPlayer().getName(), event.getPlayer().getUniqueId().str());
+        discord.sendFormattedEmbed(event.getMessage(), MessageType::MESSAGE, event.getPlayer().getSkin().getSkinData().data, event.getPlayer().getName());
     }
 
 private:

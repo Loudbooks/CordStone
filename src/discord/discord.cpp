@@ -12,9 +12,11 @@ void Discord::connect(const std::string& token) {
     }
 }
 
-void Discord::sendFormattedEmbed(const std::string &content, const MessageType type, const std::string& username, const std::string& uuid) const {
+void Discord::sendFormattedEmbed(const std::string &content, const MessageType type, const std::string& skin, const std::string &username) const {
     dpp::embed embed;
-    embed.set_thumbnail("https://api.tydiumcraft.net/v1/players/skin?uuid=" + uuid + "&type=avatar");
+    this->imageUploader.upload(skin, username + ".png");
+
+    std::string imageUrl = "https://bedrock.loudbook.dev/image/" + username + ".png";
 
     switch (type) {
         case MessageType::JOIN:
