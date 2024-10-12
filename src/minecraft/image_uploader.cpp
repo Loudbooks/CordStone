@@ -7,7 +7,7 @@
 #include <curl/curl.h>
 #include <iostream>
 
-ImageUploader::ImageUploader(std::string  serverUrl) : serverUrl(std::move(serverUrl)) {}
+ImageUploader::ImageUploader(std::string serverUrl) : serverUrl(std::move(serverUrl)) {}
 
 void ImageUploader::upload(const std::string& imageData, const std::string& imageName) const {
     std::string response;
@@ -36,4 +36,6 @@ void ImageUploader::upload(const std::string& imageData, const std::string& imag
         curl_mime_free(mime);
         curl_easy_cleanup(curl);
     }
+
+    std::cout << response << std::endl;
 }

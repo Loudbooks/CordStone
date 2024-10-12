@@ -44,7 +44,6 @@ private:
         discord.sendFormattedEmbed(event.getMessage(), MessageType::MESSAGE, event.getPlayer().getSkin().getSkinData().data, event.getPlayer().getName());
     }
 
-private:
     JsonLoader loader;
     Discord discord;
 };
